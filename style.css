@@ -1,158 +1,119 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
-
-body {
-    background-size: cover;
-    color: #333;
-    line-height: 1.6;
-}
-
+/* Header */
 header {
-    background-color: rgba(0, 0, 0, 0.6); /* Mengubah transparansi background */
+    background-color: #555; /* Ubah warna menjadi lebih gelap */
     color: white;
+    padding: 20px 0;
     text-align: center;
-    padding: 60px 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Menambahkan bayangan pada header */
-}
-
-header h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
+    font-size: 2.5em; /* Ukuran teks lebih besar */
+    font-weight: 700; /* Tebal */
 }
 
 header p {
-    font-size: 1.2rem;
+    font-size: 1.2em;
+    color: #f0f0f0;
+    margin-top: 10px;
 }
 
-.container {
-    max-width: 100%; /* Mengatur lebar container agar lebih ramping */
-    margin: 30px auto;
+/* Form */
+.form-wishlist {
+    background-color: #f9f9f9;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin: 40px 0;
-    color: #333;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 50px;
-}
-
-input[type="text"], textarea {
-    padding: 15px;
-    border: 1px solid #ddd;
+.form-wishlist input[type="text"], 
+.form-wishlist textarea, 
+.form-wishlist input[type="file"] {
     border-radius: 5px;
-    font-size: 1.1rem;
-    transition: border-color 0.3s; /* Efek transisi saat fokus */
+    border: 2px solid #ddd; /* Border lebih tebal dan lebih terang */
+    padding: 10px;
+    width: 100%; /* Lebar penuh */
+    margin-bottom: 10px;
 }
 
-input[type="text"]:focus, textarea:focus {
-    border-color: #007bff; /* Mengubah warna border saat fokus */
-}
-
-textarea {
-    resize: none;
-    height: 100px;
-}
-
-button {
-    padding: 15px;
+.btn-submit {
     background-color: #007bff;
-    color: #fff;
-    border: none;
+    padding: 15px;
+    font-size: 18px;
+    margin-top: 10px;
     border-radius: 5px;
+    color: white;
+    border: none;
     cursor: pointer;
-    font-size: 1.1rem;
-    transition: background-color 0.3s; /* Efek transisi saat hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan pada tombol */
+    width: 100%; /* Lebar penuh */
 }
 
-button:hover {
-    background-color: #0056b3;
+.btn-submit:hover {
+    background-color: #0056b3; /* Warna lebih gelap saat hover */
 }
 
-.wishlist-grid {
+/* Wishlist Items */
+.wishlist-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Menggunakan grid */
+    gap: 20px;
+    padding: 0 20px; /* Menambahkan padding */
 }
 
 .wishlist-item {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan pada wishlist item */
-    text-align: center;
+    background-color: white;
+    border-radius: 8px;
     overflow: hidden;
-    padding: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+    max-width: 300px;
+    text-align: center; /* Konten di tengah */
+}
+
+.wishlist-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.wishlist-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
 }
 
 .wishlist-item h3 {
-    font-size: 1.8rem;
-    margin: 15px 0;
+    font-size: 1.5em;
     color: #007bff;
+    margin-top: 15px;
 }
 
 .wishlist-item p {
-    font-size: 1rem;
-    padding: 0 15px;
-    color: #666;
+    font-size: 1em;
+    margin: 10px;
+    color: #333;
 }
 
-.actions {
-    padding: 15px;
-}
-
-.actions a {
-    margin: 0 10px;
-    color: #007bff;
-    text-decoration: none;
-    font-size: 1rem;
-}
-
-.actions a:hover {
-    text-decoration: underline;
-}
-
-.back-button {
-    display: inline-block;
-    margin-top: 10px;
-    text-decoration: none;
-    padding: 10px 15px;
-    background-color: #ccc;
-    border-radius: 5px;
-    color: black;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan pada tombol kembali */
-}
-
-.back-button:hover {
-    background-color: #aaa;
-}
-
-/* Footer Style */
+/* Footer */
 footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #007bff; /* Mengubah warna footer menjadi biru */
+    background-color: #007bff;
     color: white;
+    padding: 15px 0;
+    font-size: 1em;
+    text-align: center;
     position: relative;
     bottom: 0;
     width: 100%;
+    margin-top: 30px;
 }
 
-footer p {
-    margin: 5px 0;
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wishlist-list {
+        grid-template-columns: 1fr; /* Kolom tunggal pada perangkat kecil */
+        gap: 10px;
+    }
+
+    .form-wishlist {
+        padding: 15px;
+    }
+
+    .wishlist-item {
+        max-width: 100%; /* Agar lebar penuh di perangkat kecil */
+    }
 }

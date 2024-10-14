@@ -1,13 +1,14 @@
 <?php
-$db = new PDO('sqlite:database.db');
+include 'db.php';
+$db = getDBConnection();
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+$id = $_GET['id'];
 
-    $query = "DELETE FROM wishlist WHERE id = $id";
-    $db->exec($query);
+// Hapus data dari database
+$stmt = $db->prepare('DELETE FROM wishlist WHERE id = ?');
+$stmt->bindValue(1, $id, SQLITE3_INTEGER);
+$stmt->execute();
 
-    header('Location: index.php');
-    exit;
-}
+header('Location: index.php');
+exit;
 ?>

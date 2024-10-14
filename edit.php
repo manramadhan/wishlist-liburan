@@ -1,18 +1,24 @@
 <?php
-$db = new PDO('sqlite:database.db');
+include 'db.php';
+$db = getDBConnection();
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $result = $db->query("SELECT * FROM wishlist WHERE id = $id");
-    $row = $result->fetch();
-}
+$id = $_GET['id'];
 
-if (isset($_POST['destination']) && isset($_POST['description'])) {
+// Ambil data wishlist berdasarkan id
+$stmt = $db->prepare('SELECT * FROM wishlist WHERE id = ?');
+$stmt->bindValue(1, $id, SQLITE3_INTEGER);
+$result = $stmt->execute()->fetchArray();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $destination = $_POST['destination'];
     $description = $_POST['description'];
 
-    $query = "UPDATE wishlist SET destination = '$destination', description = '$description' WHERE id = $id";
-    $db->exec($query);
+    // Proses update database
+    $stmt = $db->prepare('UPDATE wishlist SET destination = ?, description = ? WHERE id = ?');
+    $stmt->bindValue(1, $destination);
+    $stmt->bindValue(2, $description);
+    $stmt->bindValue(3, $id, SQLITE3_INTEGER);
+    $stmt->execute();
 
     header('Location: index.php');
     exit;
@@ -24,19 +30,29 @@ if (isset($_POST['destination']) && isset($_POST['description'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Destinasi</title>
+    <title>Edit Wishlist</title>
     <link rel="stylesheet" href="../wishlist-liburan/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Edit Destinasi</h1>
+    <header>
+        <h1>Edit Wishlist</h1>
+    </header>
 
-        <form method="POST" action="">
-            <input type="text" name="destination" value="<?php echo $row['destination']; ?>" required>
-            <textarea name="description" required><?php echo $row['description']; ?></textarea>
-            <button type="submit">Perbarui Destinasi</button>
-            <a href="index.php" class="back-button">Kembali</a> 
+    <div class="container">
+        <form action="" method="POST" class="form-wishlist">
+            <label for="destination">Destinasi:</label>
+            <input type="text" id="destination" name="destination" value="<?php echo $result['destination']; ?>" required><br>
+
+            <label for="description">Deskripsi:</label>
+            <textarea id="description" name="description"><?php echo $result['description']; ?></textarea><br>
+
+            <button type="submit" class="btn-submit">Simpan</button>
+            <a href="index.php" class="btn-back">Kembali</a>
         </form>
     </div>
+
+    <footer>
+        <p>&copy; <?php echo date("Y"); ?> Wishlist Liburan. All rights reserved.</p>
+    </footer>
 </body>
 </html>

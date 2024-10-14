@@ -1,65 +1,60 @@
 <?php
-$db = new PDO('sqlite:' . __DIR__ . '/database.db');
+include 'db.php';
+$db = getDBConnection();
 
-$db->exec("CREATE TABLE IF NOT EXISTS wishlist (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    destination TEXT NOT NULL,
-    description TEXT NOT NULL
-)");
-
-if (isset($_POST['destination']) && isset($_POST['description'])) {
-    $destination = $_POST['destination'];
-    $description = $_POST['description'];
-
-    $query = "INSERT INTO wishlist (destination, description) VALUES ('$destination', '$description')";
-    $db->query($query);
-}
-
-$results = $db->query("SELECT * FROM wishlist");
+// Ambil data dari database
+$results = $db->query('SELECT * FROM wishlist');
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wishlist Liburan di Luar Negeri</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../wishlist-liburan/style.css">
+    <title>Wishlist Liburan</title>
 </head>
 <body>
     <header>
-        <div class="hero">
-            <h1>Dream Destinations</h1>
-            <p>List your favorite holiday spots around the world</p>
-        </div>
+        <h1>Dream Destinations</h1>
+        <p>List your favorite holiday spots around the world</p>
     </header>
-
+        
     <div class="container">
-        <form method="POST" action="">
-            <input type="text" name="destination" placeholder="Enter Destination" required>
-            <textarea name="description" placeholder="Enter Description" required></textarea>
-            <button type="submit">Add Destination</button>
+        <form action="add.php" method="POST" enctype="multipart/form-data" class="form-wishlist">
+            <label for="destination">Destinasi:</label>
+            <input type="text" id="destination" name="destination" placeholder="Masukkan destinasi" required><br>
+
+            <label for="description">Deskripsi:</label>
+            <textarea id="description" name="description" placeholder="Tambahkan deskripsi"></textarea><br>
+
+            <label for="image">Unggah Gambar:</label>
+            <input type="file" id="image" name="image"><br>
+
+            <button type="submit" class="btn-submit">Tambahkan</button>
         </form>
 
-        <h2>Your Wishlist</h2>
-
-        <div class="wishlist-grid">
-            <?php foreach ($results as $row): ?>
-                <div class="wishlist-item">
-                    <img src="../wishlist-liburan/fuji-web.jpg" alt="Destinasi Liburan">
-                    <h3><?php echo $row['destination']; ?></h3>
-                    <p><?php echo $row['description']; ?></p>
-                    <div class="actions">
-                        <a href="edit.php?id=<?php echo $row['id']; ?>">Edit</a>
-                        <a href="delete.php?id=<?php echo $row['id']; ?>" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a>
-                    </div>
+        <h2>Daftar Wishlist</h2>
+        <ul class="wishlist-list">
+            <?php while ($row = $results->fetchArray()) : ?>
+            <li class="wishlist-item">
+                <h3><?php echo $row['destination']; ?></h3>
+                <p><?php echo $row['description']; ?></p>
+                <?php if ($row['image']) : ?>
+                <img src="images/<?php echo $row['image']; ?>" alt="Foto <?php echo $row['destination']; ?>" width="150">
+                <?php endif; ?>
+                <div class="action-links">
+                    <a href="edit.php?id=<?php echo $row['id']; ?>">Edit</a> | 
+                    <a href="delete.php?id=<?php echo $row['id']; ?>">Hapus</a>
                 </div>
-            <?php endforeach; ?>
-        </div>
+            </li>
+            <?php endwhile; ?>
+        </ul>
     </div>
 
     <footer>
-        <p>&copy; <?php echo date("Y"); ?> Wishlist Liburan di Luar Negeri. All rights reserved.</p>
+        <p>&copy; <?php echo date("Y"); ?> Wishlist Liburan. All rights reserved.</p>
     </footer>
 </body>
 </html>
