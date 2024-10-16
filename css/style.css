@@ -1,0 +1,120 @@
+/* Warna yang lebih soft */
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50; /* Hijau lembut */
+    padding: 20px;
+    text-align: center;
+    color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+.container, .container-tambah {
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.form-wishlist label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-wishlist input[type="text"],
+.form-wishlist textarea,
+.form-wishlist input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.form-wishlist button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.form-wishlist button:hover {
+    background-color: #45a049;
+}
+
+.wishlist-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.wishlist-item {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+}
+
+.wishlist-item img {
+    max-width: 150px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.action-links {
+    margin-top: 10px;
+}
+
+.action-links a {
+    color: #4CAF50;
+    text-decoration: none;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.action-links a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 30px;
+    border-radius: 0px 0px 8px 8px;
+}
+
+/* Tombol kembali di edit.php */
+.btn-back {
+    background-color: #777;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.btn-back:hover {
+    background-color: #666;
+}

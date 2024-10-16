@@ -2,7 +2,7 @@
 1.  ### Description : 
 - Wishlist Liburan di Luar Negeri adalah aplikasi web sederhana yang dirancang untuk membantu pengguna merencanakan dan mengelola daftar impian liburan mereka ke luar negeri. Proyek ini menggunakan HTML, CSS, PHP, dan SQLite sebagai basis datanya. Dengan antarmuka yang ramah pengguna, aplikasi ini memungkinkan pengguna untuk menambahkan, melihat, mengedit, dan menghapus tujuan liburan yang mereka inginkan.
 
-<img src="ss-web7.png">
+<img src="screenshot/LIBURAN.png">
 
 2. ### Fitur Utama:
 

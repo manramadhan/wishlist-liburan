@@ -31,28 +31,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Wishlist</title>
-    <link rel="stylesheet" href="../wishlist-liburan/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Edit Wishlist</h1>
-    </header>
+<header>
+    <h1>Edit Wishlist</h1>
+</header>
 
-    <div class="container">
-        <form action="" method="POST" class="form-wishlist">
-            <label for="destination">Destinasi:</label>
-            <input type="text" id="destination" name="destination" value="<?php echo $result['destination']; ?>" required><br>
+<div class="container">
+    <form action="" method="POST" class="form-wishlist">
+        <label for="destination">Destinasi:</label>
+        <input type="text" id="destination" name="destination" value="<?php echo $result['destination']; ?>" required autofocus><br>
 
-            <label for="description">Deskripsi:</label>
-            <textarea id="description" name="description"><?php echo $result['description']; ?></textarea><br>
+        <label for="description">Deskripsi:</label>
+        <textarea id="description" name="description"><?php echo $result['description']; ?></textarea><br>
 
-            <button type="submit" class="btn-submit">Simpan</button>
-            <a href="index.php" class="btn-back">Kembali</a>
-        </form>
-    </div>
-
-    <footer>
-        <p>&copy; <?php echo date("Y"); ?> Wishlist Liburan. All rights reserved.</p>
-    </footer>
+        <button type="submit" class="btn-submit">Simpan</button>
+        <a href="index.php" class="btn-back">Kembali</a>
+    </form>
+</div>
 </body>
 </html>
