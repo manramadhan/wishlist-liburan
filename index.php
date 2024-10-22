@@ -12,7 +12,7 @@ $results = $db->query('SELECT * FROM wishlist');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wishlist Liburan</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../wishlist-liburan/css/style.css">
 </head>
 <body>
 <header>
@@ -45,7 +45,7 @@ $results = $db->query('SELECT * FROM wishlist');
                 <p><?php echo $row['description']; ?></p>
                 <div class="action-links">
                     <a href="edit.php?id=<?php echo $row['id']; ?>">Edit</a> | 
-                    <a href="delete.php?id=<?php echo $row['id']; ?>">Hapus</a>
+                    <a href="?action=delete&id=<?= $movie['id']; ?>" class="btn" onclick="return confirm('Anda yakin ingin menghapus ini?');">Hapus</a>
                 </div>
             </div>
         </li>

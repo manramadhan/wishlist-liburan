@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Wishlist</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../wishlist-liburan/css/style.css">
 </head>
 <body>
 <header>
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="container">
     <form action="" method="POST" class="form-wishlist">
         <label for="destination">Destinasi:</label>
-        <input type="text" id="destination" name="destination" value="<?php echo $result['destination']; ?>" required autofocus><br>
+        <input type="text" id="destination" name="destination" value="<?php echo $result['destination']; ?>" required><br>
 
         <label for="description">Deskripsi:</label>
         <textarea id="description" name="description"><?php echo $result['description']; ?></textarea><br>
