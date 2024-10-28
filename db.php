@@ -1,7 +1,7 @@
 <?php
 // Koneksi ke SQLite
 function getDBConnection() {
-    $db = new SQLite3('wishlist.db');
+    $db = new SQLite3('wishlist.db'); 
     return $db;
 }
 
